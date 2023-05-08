@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <!-- <div class="header">
     <button class="header__logo">
       <img class="header__logo_item" src="../assets/12.svg" />
     </button>
@@ -9,7 +9,41 @@
       </router-link>
       <router-link :to="'/'" class="header__button_enter"> Войти </router-link>
     </div>
-  </div>
+  </div> -->
+  <nav class="navbar navbar-expand-sm w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)"
+        ><img style="height: 50px" src="../assets/12.svg"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mynavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-primary me-2" type="button">Войти</button>
+          <button class="btn btn-primary me-2" type="button">
+            Зарегистрироваться
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <style scoped>

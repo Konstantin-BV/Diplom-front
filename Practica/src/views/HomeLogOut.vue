@@ -1,23 +1,3 @@
-<!--<template>
-<div class="main-page">
-    <SubHeader />
-    <RouterView />
-    <Footer />
-</div>
-</template>
-
-<script setup>
-import SubHeader from "../components/SubHeader.vue";
-import Footer from "../components/FooTer.vue";
-</script>
-
-<style scoped>
-.main-page {
-display: flex;
-flex-direction: column;
-}
-</style>
--->
 <script setup>
 import LeftMenu from "../components/LeftMenu.vue";
 import Header from "../components/HeaderAll.vue";
@@ -41,18 +21,6 @@ import Header from "../components/HeaderAll.vue";
 <template>
   <div class="contener h-100">
     <div class="row row-cols-2 h-100 mycol myrow">
-      <div
-        class="col-2 h-100 mycol myrow"
-        style="
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5)
-            ),
-            url(https://oir.mobi/uploads/posts/2021-03/1616971113_5-p-temnii-fon-dlya-rabochego-stola-6.jpg);
-        "
-      >
-        <left-menu />
-      </div>
       <div class="col-10 mycol myrow" style="height: 100%">
         <div class="header_con mycol myrow"><Header /></div>
         <div

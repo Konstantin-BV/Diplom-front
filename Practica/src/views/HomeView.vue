@@ -1,6 +1,6 @@
 <template>
-  <div class="Main_class">
-    <div class="Main_div_con">
+  <div class="row row-cols-col2 overflow-hidden">
+    <div class="Main_div_con col mh-70" >
       <CenterMenu
         class="Main_div_con1"
         v-for="(item, id) in children"
@@ -10,7 +10,7 @@
         @login1="Onlogin"
       />
     </div>
-    <div v-if="open" class="Main_div_conn2">
+    <div v-if="open" class="Main_div_conn2 col">
       <div class="closeModal" v-on:click="open = false"></div>
       <ItemInfo v-bind="form_item" />
     </div>
@@ -103,29 +103,29 @@ export default {
 
 .Main_div_con1 {
   position: relative;
-  width: 720px;
   display: flex;
   justify-self: start;
   flex-direction: column;
   margin: 30px;
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 .Main_div_conn2 {
-  width: 720px;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 30px;
   margin-top: 30px;
   border: 1px solid black;
-  height: 700px;
+  border-radius: 10px;
+  height: 70%;
 }
 
 .Main_div_con {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 700px;
+  height: 70%;
 }
 
 .closeModal {
@@ -139,7 +139,7 @@ export default {
   transition: opacity ease 0.5s;
 }
 
-.closeModal:hover{
+.closeModal:hover {
   opacity: 1;
 }
 
@@ -160,5 +160,37 @@ export default {
 
 .closeModal::after {
   transform: rotate(-45deg);
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: 0.5s;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transition: 0.5s;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transition: 0.5s;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transition: 0.5s;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transition: 0.5s;
 }
 </style>

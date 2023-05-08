@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="Main_Info">
-      <img class="im" src="../assets/comp.svg" />
-      <div class="Name_comp">{{ name_item }}</div>
+    <div class="row row-cols-col2 overflow-hidden">
+      <img class="im col-6" src="../assets/comp.svg" />
+      <div class="Name_comp col-6">{{ name_item }}</div>
     </div>
-    <div class="Main_Info">
-      <div class="info_div">
+    <div class="row row-cols-col2 overflow-hidden">
+      <div class="info_div col1">
         <div>Можно задать</div>
         <div class="info_div1">
           <div class="info_chexkbox" v-for="(item, id) in order" :key="id">
@@ -29,7 +29,9 @@
         </div>
       </div>
     </div>
-    <button style="width: 44%; margin-left: 35px">Задать</button>
+    <button style="width: 44%; margin-left: 1%" class="btn btn-outline-dark">
+      Задать
+    </button>
   </div>
 </template>
 

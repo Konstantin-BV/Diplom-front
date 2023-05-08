@@ -26,7 +26,7 @@
               placeholder="Введите вопрос"
               class="Text_Ask"
             />
-            <button class="Button_Text_Ask">Отправить вопрос</button>
+            <button class="Button_Text_Ask btn btn-outline-dark">Отправить вопрос</button>
           </div>
         </div>
       </div>

@@ -5,25 +5,19 @@
         <div class="Main_div_con2">
           <div style="display: flex; flex-direction: row; align-items: center">
             <div v-if="children.length > 0">
-              <div
-                v-show="open"
-                v-on:click.prevent="open = !open"
-                class="Button_open"
-              >
-                -
-              </div>
-              <div
-                v-show="!open"
-                v-on:click.prevent="open = !open"
-                class="Button_open"
-              >
-                +
+              <div v-on:click.prevent="open = !open" class="Button_open">
+                <i class="right" v-bind:class="{ down: open }"></i>
               </div>
             </div>
-            {{ name }}
+            <div style="margin-left: 10px">{{ name }}</div>
           </div>
           <div class="button_name">
-            <button v-on:click.prevent="login1">Подробние</button>
+            <button
+              v-on:click.prevent="login1"
+              class="btn btn-outline-dark btn-sm"
+            >
+              Подробние
+            </button>
           </div>
         </div>
         <div v-show="open" class="Main_div_con4" :key="id">
@@ -96,14 +90,16 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  min-height: 50px;
   font-size: 14pt;
   align-items: center;
+  border-radius: 10px;
 }
 
 .Button_open {
   font-size: 20pt;
-  margin: 3px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
@@ -123,6 +119,7 @@ export default {
 }
 
 .Main_div_con4 {
+  min-height: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
