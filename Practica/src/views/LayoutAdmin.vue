@@ -1,13 +1,67 @@
+<!--<template>
+<div class="main-page">
+    <SubHeader />
+    <RouterView />
+    <Footer />
+</div>
+</template>
+
 <script setup>
-import Header from "../components/HeaderAuth.vue";
+import SubHeader from "../components/SubHeader.vue";
+import Footer from "../components/FooTer.vue";
 </script>
+
+<style scoped>
+.main-page {
+display: flex;
+flex-direction: column;
+}
+</style>
+-->
+<script setup>
+import LeftMenu from "../components/LeftMenuAdmin.vue";
+import Header from "../components/HeaderAll.vue";
+</script>
+
+<!--<template>
+  <div class="body_reg">
+    <div class="form_con">
+      <Header class="header_con" />
+      <div class="menu_cont">
+        <LeftMenu class="left_menu" />
+        <div class="content_con">
+          <router-view></router-view>
+        </div>
+      </div>
+      <Footer class="footer_con" />
+    </div>
+  </div>
+</template> -->
 
 <template>
   <div class="contener h-100">
-    <div class="h-100 mycol myrow">
-      <div class="mycol myrow" style="height: 100%">
+    <div class="row row-cols-2 h-100 mycol myrow">
+      <div
+        class="col-2 h-100 mycol myrow"
+        style="
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(https://oir.mobi/uploads/posts/2021-03/1616971113_5-p-temnii-fon-dlya-rabochego-stola-6.jpg);
+        "
+      >
+        <left-menu />
+      </div>
+      <div
+        class="col-10 mycol myrow"
+        style="overflow-x: hidden; overflow-y: hidden; height: 100%"
+      >
         <div class="header_con mycol myrow"><Header /></div>
-        <div class="content_con mycol myrow" style="height: 100%">
+        <div
+          class="content_con mycol myrow"
+          style="overflow-x: hidden; overflow-y: auto; height: 100%"
+        >
           <router-view> </router-view>
         </div>
       </div>
@@ -17,14 +71,6 @@ import Header from "../components/HeaderAuth.vue";
 
 <style scoped>
 @media (min-width: 1024px) {
-  .form_con {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex: 80px, 1fr, 120px;
-    overflow: auto;
-  }
-
   .menu_cont {
     display: flex;
     flex: 1;

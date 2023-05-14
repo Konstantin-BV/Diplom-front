@@ -13,8 +13,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto"></ul>
-        <form class="d-flex">User Name</form>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-primary me-2" type="button">Войти</button>
+          <button class="btn btn-primary me-2" type="button">
+            Зарегистрироваться
+          </button>
+        </form>
       </div>
     </div>
   </nav>

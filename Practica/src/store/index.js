@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { createStore } from "vuex";
 
@@ -7,7 +6,7 @@ export const store = createStore({
     status: "",
     token: localStorage.getItem("token") || "",
     user: {},
-    Auth: false,
+    Auth: true,
   },
   mutations: {
     auth_request(state) {
@@ -24,6 +23,7 @@ export const store = createStore({
     logout(state) {
       state.status = "";
       state.token = "";
+      state.Auth = false;
     },
   },
   actions: {
@@ -31,7 +31,7 @@ export const store = createStore({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:3000/login",
+          url: "http://localhost:8080/login",
           data: user,
           method: "POST",
         })
@@ -54,7 +54,7 @@ export const store = createStore({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:3000/register",
+          url: "http://localhost:8080/register",
           data: user,
           method: "POST",
         })

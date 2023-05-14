@@ -5,7 +5,7 @@
       style="align-items: center"
     >
       <a class="navbar-brand text-white" href="#" style="margin-right: 0"
-        >Navbar</a
+        >Company Name</a
       >
       <div
         class="collapse navbar-collapse w-100 h-100"
@@ -17,29 +17,23 @@
           class="navbar-nav row gy-3 w-100 h-100"
           style="padding-top: 20px; text-align: center; align-content: center"
         >
-          <li class="nav-item hov text-white" style="height: 5%">
-            <router-link :to="'/'" class="nav-link text-white h-100 text-a"
-              >Ссылка 1</router-link
+          <li class="nav-item hov text-white" style="height: 10%">
+            <router-link
+              :to="'/homecompany'"
+              class="nav-link text-white h-100 text-a"
+              >Создание отделов</router-link
             >
           </li>
-          <li class="nav-item mycol hov text-white" style="height: 5%">
-            <router-link :to="'/'" class="text-white nav-link text-a"
-              >Ссылка 2</router-link
+          <li class="nav-item mycol hov text-white" style="height: 10%">
+            <router-link
+              :to="'/registeradmin'"
+              class="text-white nav-link text-a"
+              >Ренистрация администраторов</router-link
             >
           </li>
-          <li class="nav-item mycol hov text-white" style="height: 5%">
+          <li class="nav-item mycol hov text-white" style="height: 10%">
             <router-link :to="'/'" class="text-white nav-link text-a"
-              >Ссылка 2</router-link
-            >
-          </li>
-          <li class="nav-item mycol hov text-white" style="height: 5%">
-            <router-link :to="'/'" class="text-white nav-link text-a"
-              >Ссылка 2</router-link
-            >
-          </li>
-          <li class="nav-item mycol hov text-white" style="height: 5%">
-            <router-link :to="'/'" class="text-white nav-link text-a"
-              >Ссылка 2</router-link
+              >Профель</router-link
             >
           </li>
         </ul>
@@ -50,7 +44,6 @@
 
 <style>
 @media (min-width: 768px) {
-
   .text-a {
     line-height: 31px;
     font-size: 17px;

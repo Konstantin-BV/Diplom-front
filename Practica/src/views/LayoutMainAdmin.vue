@@ -19,7 +19,7 @@ flex-direction: column;
 </style>
 -->
 <script setup>
-import LeftMenu from "../components/LeftMenu.vue";
+import LeftMenu from "../components/LeftMenuMainAdmin.vue";
 import Header from "../components/HeaderAll.vue";
 </script>
 
@@ -53,11 +53,14 @@ import Header from "../components/HeaderAll.vue";
       >
         <left-menu />
       </div>
-      <div class="col-10 mycol myrow" style="height: 100%">
+      <div
+        class="col-10 mycol myrow"
+        style="overflow-x: hidden; overflow-y: hidden; height: 100%"
+      >
         <div class="header_con mycol myrow"><Header /></div>
         <div
           class="content_con mycol myrow"
-          style="overflow-x: hidden; overflow-y: auto; height: 85%"
+          style="overflow-x: hidden; overflow-y: auto; height: 100%"
         >
           <router-view> </router-view>
         </div>
@@ -68,14 +71,6 @@ import Header from "../components/HeaderAll.vue";
 
 <style scoped>
 @media (min-width: 1024px) {
-  .form_con {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex: 80px, 1fr, 120px;
-    overflow: auto;
-  }
-
   .menu_cont {
     display: flex;
     flex: 1;

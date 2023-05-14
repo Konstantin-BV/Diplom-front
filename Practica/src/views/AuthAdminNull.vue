@@ -3,21 +3,14 @@
     <div class="d_i_v px-4 row gy-3 col-md-8 offset-md-2">
       <img class="header__logo" src="../assets/12.svg" />
       <div>
-        <label for="inputEmail4" class="form-label">Название компании</label>
+        <label for="inputEmail4" class="form-label">Имя сотрудника</label>
         <input
           class="form-control"
           id="inputEmail4"
           placeholder="Введите имя"
           v-model="name"
         />
-        <label for="inputEmail4" class="form-label">Адрес компании</label>
-        <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Телефон компании</label>
+        <label for="inputEmail4" class="form-label">Электронный адресс</label>
         <input
           class="form-control"
           id="inputEmail4"

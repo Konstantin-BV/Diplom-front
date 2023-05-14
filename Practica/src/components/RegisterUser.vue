@@ -1,24 +1,11 @@
 <template>
   <div class="h-100 w-100 row">
-    <div class="d_i_v px-4 row gy-3 col-md-8 offset-md-2">
+    <div class="d_i_v">
       <img class="header__logo" src="../assets/12.svg" />
       <div>
-        <label for="inputEmail4" class="form-label">Название компании</label>
+        <label for="inputEmail4" class="form-label">Имя сотрудника</label>
         <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Адрес компании</label>
-        <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Телефон компании</label>
-        <input
+          type="email"
           class="form-control"
           id="inputEmail4"
           placeholder="Введите имя"
@@ -66,12 +53,31 @@
 
 <script>
 export default {
+  props: {
+    // eslint-disable-next-line vue/require-prop-type-constructor
+    name_item: {
+      type: String,
+      default: null,
+    },
+    children_item: {
+      type: Array,
+      default: null,
+      required: true,
+    },
+
+    id_item: {
+      type: Number,
+      default: null,
+      required: true,
+    },
+  },
   data() {
     return {
       name: "",
       email: "",
       password: "",
       password_confirmation: "",
+      id: "",
     };
   },
   methods: {
@@ -81,6 +87,8 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
+        role_id: 2,
+        department_id: this.id_item,
       };
       this.$store
         .dispatch("register", data)
@@ -95,19 +103,18 @@ export default {
 .header__logo {
   border: none;
   background: transparent;
-  padding: 12px 16px;
   font-size: 16px;
   height: 80px;
   cursor: pointer;
 }
 
 .d_i_v {
-  width: 30%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin: auto;
-  border: 1px solid rgb(0, 0, 0);
   border-radius: 15px;
+  margin-left: 15px;
 }
 
 .inp {

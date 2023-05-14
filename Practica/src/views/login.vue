@@ -22,35 +22,34 @@
           v-model="password"
         />
       </div>
-      <button class="butt btn btn-outline-dark btn-sm">Войти</button>
+      <button class="butt btn btn-outline-dark btn-sm" @click="login">
+        Войти
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-// import api from "@/api";
-// import { reactive } from "vue";
-// export default {
-//   setup() {
-//     const form = reactive({
-//       name: "",
-//       email: "",
-//       password: "",
-//       password_two: "",
-//     });
-
-//     const submit = () => {
-//       api.auth.login(form).then((response) => {
-//         console.log(response.data);
-//       });
-//     };
-
-//     return {
-//       form,
-//       submit,
-//     };
-//   },
-// };
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    login: function () {
+      let formdata = {
+        email: this.email,
+        password: this.password,
+      };
+      this.$store
+        .dispatch("login", formdata)
+        .then(() => this.$router.push("/"))
+        .catch((err) => console.log(err));
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      component: () => import("../views/MainLayout.vue"),
+      component: () => import("../views/LayoutAdmin.vue"),
       meta: {
         requiresAuth: true,
       },
@@ -21,14 +21,6 @@ const router = createRouter({
           },
         },
         {
-          path: "/about",
-          name: "about",
-          // route level code-splitting
-          // this generates a separate chunk (About.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import("../views/AboutView.vue"),
-        },
-        {
           path: "/tasks",
           name: "tasks",
           // route level code-splitting
@@ -39,12 +31,64 @@ const router = createRouter({
       ],
     },
     {
+      path: "/",
+      component: () => import("../views/LayoutMainAdmin.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+      children: [
+        {
+          path: "/homecompany",
+          name: "homecompany",
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import("../views/MainCompany.vue"),
+        },
+        {
+          path: "/registeradmin",
+          name: "registeradmin",
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import("../views/RegisterAdminsCompany.vue"),
+        },
+      ]
+    },
+    {
+      path: "/registeradminnull",
+      name: "registeradminnull",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/AuthAdminNull.vue"),
+    },
+    {
       path: "/auth",
       name: "auth",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/auth.vue"),
+    },
+
+    {
+      path: "/",
+      name: "HomeLogOut",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/HomeLogOut.vue"),
+      children: [
+        {
+          path: "/Home",
+          name: "MainLogOut",
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import("../views/MainLogOut.vue"),
+        },
+      ],
     },
     {
       path: "/login",
@@ -65,7 +109,7 @@ router.beforeEach((to, from, next) => {
       next();
       return;
     }
-    next("/login");
+    next("/Home");
   } else {
     next();
   }

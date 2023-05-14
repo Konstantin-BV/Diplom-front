@@ -8,7 +8,7 @@
           <div class="Condition_Text">
             <div class="Radio_Buttons">
               <input type="radio" value="0" v-model="item.condition" />
-              <label>Несделано</label>
+              <label>Не сделано</label>
               <br />
               <input type="radio" value="1" v-model="item.condition" />
               <label>Вопрос</label>
@@ -26,7 +26,9 @@
               placeholder="Введите вопрос"
               class="Text_Ask"
             />
-            <button class="Button_Text_Ask btn btn-outline-dark">Отправить вопрос</button>
+            <button class="Button_Text_Ask btn btn-outline-dark">
+              Отправить вопрос
+            </button>
           </div>
         </div>
       </div>

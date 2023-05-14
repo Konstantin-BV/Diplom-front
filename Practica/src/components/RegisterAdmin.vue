@@ -1,24 +1,11 @@
 <template>
   <div class="h-100 w-100 row">
-    <div class="d_i_v px-4 row gy-3 col-md-8 offset-md-2">
+    <div class="d_i_v">
       <img class="header__logo" src="../assets/12.svg" />
       <div>
-        <label for="inputEmail4" class="form-label">Название компании</label>
+        <label for="inputEmail4" class="form-label">Имя сотрудника</label>
         <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Адрес компании</label>
-        <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Телефон компании</label>
-        <input
+          type="email"
           class="form-control"
           id="inputEmail4"
           placeholder="Введите имя"
@@ -57,6 +44,40 @@
           v-model="password_confirmation"
         />
       </div>
+
+      <div class="dropdown" style="margin-right: 10px">
+        <button
+          class="btn btn-outline-dark btn-sm dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Отделы
+        </button>
+        <div>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <div
+                class="info_chexkbox"
+                v-for="(item, id) in children"
+                v-bind="item"
+                :key="id"
+              >
+                <input
+                  type="checkbox"
+                  id="item.id"
+                  value="item.name"
+                  v-model="item.check"
+                />
+                <label for="item.name"> {{ item.name }} </label>
+              </div>
+            </li>
+            <li><a class="dropdown-item" href="#">Подотдел</a></li>
+          </ul>
+        </div>
+      </div>
+
       <button class="butt btn btn-outline-dark btn-sm" @click="register">
         Зарегистрироватся
       </button>
@@ -66,12 +87,59 @@
 
 <script>
 export default {
+  props: {
+    // eslint-disable-next-line vue/require-prop-type-constructor
+    name_item: {
+      type: String,
+      default: null,
+    },
+    children_item: {
+      type: Array,
+      default: null,
+      required: true,
+    },
+
+    id_item: {
+      type: Number,
+      default: null,
+      required: true,
+    },
+  },
   data() {
     return {
       name: "",
       email: "",
       password: "",
       password_confirmation: "",
+      id: "",
+      role_id: 2,
+      department_id: [],
+      children: [
+        {
+          id: 1,
+          name: "Sub Group1",
+        },
+        {
+          id: 2,
+          name: "Sub Group2",
+        },
+        {
+          id: 3,
+          name: "Item3",
+        },
+        {
+          id: 4,
+          name: "Item4",
+        },
+        {
+          id: 5,
+          name: "Item5",
+        },
+        {
+          id: 6,
+          name: "Item6",
+        },
+      ],
     };
   },
   methods: {
@@ -81,6 +149,8 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
+        role_id: 1,
+        department_id: this.id_item,
       };
       this.$store
         .dispatch("register", data)
@@ -95,19 +165,18 @@ export default {
 .header__logo {
   border: none;
   background: transparent;
-  padding: 12px 16px;
   font-size: 16px;
   height: 80px;
   cursor: pointer;
 }
 
 .d_i_v {
-  width: 30%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin: auto;
-  border: 1px solid rgb(0, 0, 0);
   border-radius: 15px;
+  margin-left: 15px;
 }
 
 .inp {

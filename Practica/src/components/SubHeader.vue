@@ -3,29 +3,78 @@
 <template>
   <div class="SubHeader">
     <div class="SubHeader__sub-header">
-      <div class="SubHeader__sub-header_image">
-        <img
-          src="https://d35aaqx5ub95lt.cloudfront.net/images/331a32943ff73be28537dfc7469d5639.svg"
-        />
-      </div>
       <div class="SubHeader__sub-header_title">
         <div class="SubHeader__sub-header_title_text">
-          Учите языки бесплатно, весело и эффективно!
+          Как наш сайт поможет вашей компании
         </div>
-        <div class="SubHeader__sub-header_title_button_enter">Начать</div>
-        <div class="SubHeader__sub-header_title_button_again-enter">
-          У меня уже есть аккаунт
+        <div class="SubHeader__icons">
+          <div class="SubHeader__icon_button" style="border-radius: 40px">
+            <button
+              class="btn btn-light SubHeader__icon"
+              type="button"
+              style="border-radius: 60px; height: 80px; width: 80px"
+            >
+              <img style="height: 40px" src="../assets/tv.svg" />
+            </button>
+            <div class="text">Лёгкая раздача заданий</div>
+          </div>
+          <div class="SubHeader__icon_button" style="border-radius: 40px">
+            <button
+              class="btn btn-light SubHeader__icon"
+              type="button"
+              style="border-radius: 60px; height: 80px; width: 80px"
+            >
+              <img style="height: 40px" src="../assets/card-checklist.svg" />
+            </button>
+            <div class="text">Пошаговые выполнение заданий</div>
+          </div>
+          <div class="SubHeader__icon_button" style="border-radius: 40px">
+            <button
+              class="btn btn-light SubHeader__icon"
+              type="button"
+              style="border-radius: 60px; height: 80px; width: 80px"
+            >
+              <img style="height: 40px" src="../assets/folder.svg" />
+            </button>
+            <div class="text">Рассылка файлов с заданиями</div>
+          </div>
+          <div class="SubHeader__icon_button" style="border-radius: 40px">
+            <button
+              class="btn btn-light SubHeader__icon"
+              type="button"
+              style="border-radius: 60px; height: 80px; width: 80px"
+            >
+              <img style="height: 40px" src="../assets/chat-left-dots.svg" />
+            </button>
+            <div class="text">Лёгкое общение</div>
+          </div>
+          <!-- <button
+            class="btn btn-light me-2 SubHeader__icon col"
+            style="border-radius: 40px; height: 60px; width: 60px"
+            type="button"
+          >
+            <img style="height: 30px" src="../assets/tv.svg" />
+          </button>
+          <button
+            class="btn btn-light me-2 SubHeader__icon col"
+            style="border-radius: 40px; height: 60px; width: 60px"
+            type="button"
+          >
+            <img style="height: 30px" src="../assets/chat-left-dots.svg" />
+          </button>
+          <button
+            class="btn btn-light me-2 SubHeader__icon col"
+            style="border-radius: 40px; height: 60px; width: 60px"
+            type="button"
+          >
+            <img style="height: 30px" src="../assets/folder.svg" />
+          </button> -->
+
+          <!-- <div class="SubHeader__sub-header_title_button_enter">Начать</div>
+          <div class="SubHeader__sub-header_title_button_again-enter">
+            У меня уже есть аккаунт card-checklist
+          </div> -->
         </div>
-      </div>
-    </div>
-    <div class="SubHeader__language-selection">
-      <div
-        class="SubHeader__language-selection_item"
-        v-for="item in language_array"
-        :key="item.id"
-      >
-        <img class="SubHeader__language-selection_item_image" :src="item.img" />
-        {{ item.text }}
       </div>
     </div>
   </div>
@@ -65,8 +114,8 @@ export default {
 <style scoped>
 .SubHeader__sub-header {
   display: flex;
-  background: #235390;
-  background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url(https://images.wallpaperscraft.ru/image/single/noutbuk_kod_programmirovanie_212332_1920x1080.jpg);
   height: 700px;
   align-items: center;
   justify-content: center;
@@ -75,42 +124,25 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 720px;
 }
+
+.SubHeader__icons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px;
+}
+
 .SubHeader__sub-header_title_text {
   text-align: center;
   color: white;
   font: 40px sans-serif;
   font-weight: bold;
 }
-.SubHeader__sub-header_title_button_enter {
-  display: flex;
-  font-family: Bradley Hand, cursive;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 70px;
-  border-radius: 20px;
-  background: rgb(5, 232, 5);
-  color: white;
-  margin: 11px 16px;
-  font: 26px sans-serif;
-  font-weight: bold;
-}
-.SubHeader__sub-header_title_button_again-enter {
-  display: flex;
-  font-family: Bradley Hand, cursive;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 70px;
-  border-radius: 20px;
-  background: #235390;
-  color: white;
-  margin: 11px 16px;
-  font: 26px sans-serif;
-  border: 6px solid #0a4a82;
-  font-weight: bold;
+.SubHeader__icon {
+  margin-right: 0;
+  margin-left: 0;
 }
 .SubHeader__language-selection {
   display: flex;
@@ -122,7 +154,6 @@ export default {
 .SubHeader__language-selection_item {
   display: flex;
   color: white;
-  margin: 10px;
   font: 20px sans-serif;
   font-weight: bold;
 }
@@ -130,5 +161,22 @@ export default {
   margin: 0 10px 0 0;
   height: 28px;
   width: 36px;
+}
+.SubHeader__icon_button {
+  margin: auto;
+  margin-top: 0;
+  text-align: center;
+  width: 80px;
+}
+.SubHeader__icon_button .text {
+  opacity: 0;
+}
+
+.SubHeader__icon_button:hover .text {
+  opacity: 1;
+  color: white;
+  line-height: 1.5;
+  font: 16px sans-serif;
+  font-weight: bold;
 }
 </style>
