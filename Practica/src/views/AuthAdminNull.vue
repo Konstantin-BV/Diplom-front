@@ -3,15 +3,9 @@
     <div class="d_i_v px-4 row gy-3 col-md-8 offset-md-2">
       <img class="header__logo" src="../assets/12.svg" />
       <div>
-        <label for="inputEmail4" class="form-label">Имя сотрудника</label>
+        <label for="inputEmail4" class="form-label">Ваше ФИО</label>
         <input
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Введите имя"
-          v-model="name"
-        />
-        <label for="inputEmail4" class="form-label">Электронный адресс</label>
-        <input
+          type="email"
           class="form-control"
           id="inputEmail4"
           placeholder="Введите имя"
@@ -19,13 +13,13 @@
         />
       </div>
       <div>
-        <label for="inputEmail4" class="form-label">Эл. адрес</label>
+        <label for="inputEmail4" class="form-label">Ваш Эл. адрес</label>
         <input
           type="email"
           class="form-control"
           id="inputEmail4"
           placeholder="Введите почту"
-          v-model="email"
+          v-model="email_user"
         />
       </div>
       <div>
@@ -50,6 +44,43 @@
           v-model="password_confirmation"
         />
       </div>
+      <div>
+        <label for="inputEmail4" class="form-label">Имя компании</label>
+        <input
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Введите имя"
+          v-model="title"
+        />
+        <label for="inputEmail4" class="form-label"
+          >Электронный адресс компании</label
+        >
+        <input
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Введите имя"
+          v-model="email"
+        />
+      </div>
+      <div>
+        <label for="inputEmail4" class="form-label">Адресс</label>
+        <input
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Введите почту"
+          v-model="address"
+        />
+      </div>
+      <div>
+        <label for="inputEmail4" class="form-label">Телефон</label>
+        <input
+          type="Number"
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Введите почту"
+          v-model="phone"
+        />
+      </div>
       <button class="butt btn btn-outline-dark btn-sm" @click="register">
         Зарегистрироватся
       </button>
@@ -61,23 +92,36 @@
 export default {
   data() {
     return {
+      title: "",
       name: "",
       email: "",
+      address: "",
+      phone: 0,
       password: "",
       password_confirmation: "",
+      email_user: "",
     };
   },
   methods: {
     register: function () {
+      console.log(import.meta.env.VITE_API_URL);
       let data = {
         name: this.name,
-        email: this.email,
+        email: this.email_user,
         password: this.password,
         password_confirmation: this.password_confirmation,
+        role_id: 3,
+        title: this.title,
+        company_address: this.address,
+        company_phone: this.phone,
+        company_email: this.email,
       };
+      console.log(data);
       this.$store
-        .dispatch("register", data)
-        .then(() => this.$router.push("/"))
+
+        // eslint-disable-next-line prettier/prettier
+        .dispatch("registerCompany", data)
+        .then(() => this.$router.push("/homecompany"))
         .catch((err) => console.log(err));
     },
   },

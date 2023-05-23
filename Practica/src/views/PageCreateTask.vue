@@ -1,29 +1,15 @@
 <template>
   <div class="row row-cols-col2 overflow-hidden">
     <div class="Main_div_con col mh-70" style="max-height: 700px">
-      <div v-for="(item, id) in children" :key="id">
-        <CenterMenu
-          class="Main_div_con1"
-          v-for="(item1, id) in item"
-          v-bind="item1"
-          :key="id"
-          @login="Onlogin"
-          @login1="Onlogin"
-        />
-      </div>
-    </div>
-    <div v-if="open" class="Main_div_conn2 col">
-      <div class="closeModal" v-on:click="open = false"></div>
-      <ItemInfo v-bind="form_item" />
+      <CreateTask class="Main_div_con1" />
     </div>
   </div>
 </template>
 
 <script>
-import CenterMenu from "../components/CenterMenu.vue";
-import ItemInfo from "../components/ItemInfo.vue";
+import CreateTask from "../components/CreateTask.vue";
 export default {
-  components: { CenterMenu, ItemInfo },
+  components: { CreateTask },
   data: () => ({
     open: false,
     form_item: {
@@ -35,17 +21,17 @@ export default {
   }),
   beforeCreate: function () {
     this.$store
-      .dispatch("GetDiportamentTree")
+      .dispatch("GetDiportament")
       .then((resp) => ((this.children = resp.data), console.log(resp)))
       .catch((err) => console.log(err));
   },
   methods: {
     Onlogin(data) {
       (this.open = !this.open),
-        (this.form_item.name_item = data.title),
+        (this.form_item.name_item = data.name),
         (this.form_item.id_item = data.id),
         (this.form_item.children_item = data.children),
-        console.log(data.title);
+        console.log(data);
     },
   },
 };

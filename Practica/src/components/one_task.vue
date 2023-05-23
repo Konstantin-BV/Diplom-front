@@ -1,35 +1,28 @@
 <template>
   <div>
-    <div @click="open = !open" class="Text_Name">{{ name }}</div>
+    <div @click="open = !open" class="Text_Name">Шаг №{{ id }}</div>
     <div>
       <div v-if="open">
-        <div v-for="(item, id) in children" :key="id" class="Main_div">
-          <div @click="open = !open" class="Name_Step">Шаг №{{ id + 1 }}</div>
-          <div class="Condition_Text">
-            <div class="Radio_Buttons">
-              <input type="radio" value="0" v-model="item.condition" />
-              <label>Не сделано</label>
-              <br />
-              <input type="radio" value="1" v-model="item.condition" />
-              <label>Вопрос</label>
-              <br />
-              <input type="radio" value="2" v-model="item.condition" />
-              <label>Сделано</label>
-            </div>
-            <div class="Text_Task">
-              {{ item.text }}
-            </div>
+        <div class="Condition_Text">
+          <div class="Radio_Buttons">
+            <input type="radio" value="0" v-model="ddd" />
+            <label>Не сделано</label>
+            <br />
+            <input type="radio" value="1" v-model="ddd" />
+            <label>Вопрос</label>
+            <br />
+            <input type="radio" value="2" v-model="ddd" />
+            <label>Сделано</label>
           </div>
-          <div v-if="item.condition == 1" class="Ask_Button">
-            <input
-              v-model="ask"
-              placeholder="Введите вопрос"
-              class="Text_Ask"
-            />
-            <button class="Button_Text_Ask btn btn-outline-dark">
-              Отправить вопрос
-            </button>
+          <div class="Text_Task">
+            {{ main_text }}
           </div>
+        </div>
+        <div v-if="ddd == 1" class="Ask_Button">
+          <input v-model="ask" placeholder="Введите вопрос" class="Text_Ask" />
+          <button class="Button_Text_Ask btn btn-outline-dark">
+            Отправить вопрос
+          </button>
         </div>
       </div>
     </div>
@@ -40,8 +33,8 @@
 export default {
   name: "center-menu",
   props: {
-    children: {
-      type: Array,
+    main_text: {
+      type: String,
       default: null,
       required: true,
     },
@@ -55,7 +48,7 @@ export default {
       default: null,
       required: true,
     },
-    condition: {
+    statu: {
       type: Number,
       default: null,
       required: true,
@@ -63,6 +56,7 @@ export default {
   },
   data: () => ({
     open: false,
+    ddd: 1,
     ask: "",
   }),
 };

@@ -28,6 +28,14 @@ const router = createRouter({
           // which is lazy-loaded when the route is visited.
           component: () => import("../views/tasks.vue"),
         },
+        {
+          path: "/CreateTasks",
+          name: "CreateTasks",
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import("../views/PageCreateTask.vue"),
+        },
       ],
     },
     {
@@ -53,7 +61,7 @@ const router = createRouter({
           // which is lazy-loaded when the route is visited.
           component: () => import("../views/RegisterAdminsCompany.vue"),
         },
-      ]
+      ],
     },
     {
       path: "/registeradminnull",
@@ -70,6 +78,15 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/auth.vue"),
+    },
+
+    {
+      path: "/userask",
+      name: "userask",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/LayoutUser.vue"),
     },
 
     {

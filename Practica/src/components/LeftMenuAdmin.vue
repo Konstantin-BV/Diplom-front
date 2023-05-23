@@ -1,3 +1,7 @@
+<script setup>
+import { store } from "../store/index.js";
+</script>
+
 <template>
   <div class="navbar-container h-100">
     <nav
@@ -5,8 +9,8 @@
       style="align-items: center"
     >
       <a class="navbar-brand text-white" href="#" style="margin-right: 0"
-        >Company Name</a
-      >
+        >{{ store.state.Company.title }}
+      </a>
       <div
         class="collapse navbar-collapse w-100 h-100"
         id="navbar"

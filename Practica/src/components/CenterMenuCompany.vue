@@ -4,12 +4,12 @@
       <div class="Main_div_con3">
         <div class="Main_div_con2">
           <div style="display: flex; flex-direction: row; align-items: center">
-            <div v-if="children.length > 0">
+            <div>
               <div v-on:click.prevent="open = !open" class="Button_open">
                 <i class="right" v-bind:class="{ down: open }"></i>
               </div>
             </div>
-            <div style="margin-left: 10px">{{ name }}</div>
+            <div style="margin-left: 10px">{{ title }}</div>
           </div>
           <div class="button_name1">
             <div class="dropdown" style="margin-right: 10px">
@@ -28,19 +28,28 @@
                     >Сотрудника</a
                   >
                 </li>
-                <li><a class="dropdown-item" href="#">Подотдел</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    v-on:click.prevent="GetDipor"
+                    href="#"
+                    >Подотдел</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <div v-show="open" class="Main_div_con4" :key="id">
-          <CenterMenuCompany
-            v-for="(item1, id) in children"
-            v-bind="item1"
-            :key="id"
-            @login="login"
-            @login1="login"
-          />
+          <div v-for="(item, id) in children" :key="id">
+            <CenterMenuCompany
+              v-for="(item1, id) in item"
+              v-bind="item1"
+              :key="id"
+              @login="login"
+              @login1="login"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -58,7 +67,22 @@ export default {
       default: null,
       required: true,
     },
-    name: {
+    title: {
+      type: String,
+      default: null,
+      required: true,
+    },
+    parent_id: {
+      type: Number,
+      default: null,
+      required: true,
+    },
+    company_id: {
+      type: Number,
+      default: null,
+      required: true,
+    },
+    description: {
       type: String,
       default: null,
       required: true,
@@ -83,6 +107,14 @@ export default {
 
     login1() {
       this.$emit("login1", {
+        id: this.id,
+        name: this.name,
+        children: this.children,
+      });
+      console.log(this.name);
+    },
+    GetDipor() {
+      this.$emit("GetDipor", {
         id: this.id,
         name: this.name,
         children: this.children,

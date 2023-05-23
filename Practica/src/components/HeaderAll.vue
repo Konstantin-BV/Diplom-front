@@ -1,3 +1,7 @@
+<script setup>
+import { store } from "../store/index.js";
+</script>
+
 <template>
   <nav class="navbar navbar-expand-sm w-100">
     <div class="container-fluid">
@@ -14,7 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto"></ul>
-        <form class="d-flex">User Name</form>
+        <form class="d-flex">{{ store.state.user.name }}</form>
       </div>
     </div>
   </nav>

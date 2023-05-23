@@ -1,11 +1,15 @@
+<script setup>
+import { store } from "../store/index.js";
+</script>
+
 <template>
   <div class="navbar-container h-100">
     <nav
       class="navbar navbar-expand-md navbar-light"
       style="align-items: center"
     >
-      <a class="navbar-brand text-white" href="#" style="margin-right: 0"
-        >Company Name</a
+      <a class="navbar-brand text-white" href="#" style="margin-right: 0">
+        {{ store.state.Company.title }}</a
       >
       <div
         class="collapse navbar-collapse w-100 h-100"

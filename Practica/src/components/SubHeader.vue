@@ -48,32 +48,6 @@
             </button>
             <div class="text">Лёгкое общение</div>
           </div>
-          <!-- <button
-            class="btn btn-light me-2 SubHeader__icon col"
-            style="border-radius: 40px; height: 60px; width: 60px"
-            type="button"
-          >
-            <img style="height: 30px" src="../assets/tv.svg" />
-          </button>
-          <button
-            class="btn btn-light me-2 SubHeader__icon col"
-            style="border-radius: 40px; height: 60px; width: 60px"
-            type="button"
-          >
-            <img style="height: 30px" src="../assets/chat-left-dots.svg" />
-          </button>
-          <button
-            class="btn btn-light me-2 SubHeader__icon col"
-            style="border-radius: 40px; height: 60px; width: 60px"
-            type="button"
-          >
-            <img style="height: 30px" src="../assets/folder.svg" />
-          </button> -->
-
-          <!-- <div class="SubHeader__sub-header_title_button_enter">Начать</div>
-          <div class="SubHeader__sub-header_title_button_again-enter">
-            У меня уже есть аккаунт card-checklist
-          </div> -->
         </div>
       </div>
     </div>

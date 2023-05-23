@@ -1,22 +1,29 @@
 <template>
   <div class="row row-cols-col2 overflow-hidden">
     <div class="Main_div_con col mh-70">
-      <button class="Main_div_con1" style="align-items: center">
+      <button @click="Cl()" class="Main_div_con1" style="align-items: center">
         Добавить отдел
       </button>
-      <CenterMenuCompany
-        class="Main_div_con1"
-        v-for="(item, id) in children"
-        v-bind="item"
-        :key="id"
-        @login="Onlogin"
-        @login1="Onlogin"
-      />
+      <div v-for="(item, id) in children" :key="id">
+        <CenterMenuCompany
+          class="Main_div_con1"
+          v-for="(item1, id) in item"
+          v-bind="item1"
+          :key="id"
+          @login="Onlogin"
+          @login1="Onlogin"
+          @GetDipor="GetDipor"
+        />
+      </div>
     </div>
     <div class="Main_div_con col mh-70">
       <div v-if="open" class="Main_div_conn3 col">
         <div class="closeModal" v-on:click="open = false"></div>
         <RegisterEmployee v-bind="form_item" />
+      </div>
+      <div v-if="flag" class="Main_div_conn3 col">
+        <div class="closeModal" v-on:click="flag = false"></div>
+        <CreateDi v-bind="form_item" />
       </div>
     </div>
   </div>
@@ -25,68 +32,28 @@
 <script>
 import CenterMenuCompany from "../components/CenterMenuCompany.vue";
 import RegisterEmployee from "../components/RegisterUser.vue";
+import CreateDi from "../components/CreateDeportament.vue";
+
 export default {
-  components: { CenterMenuCompany, RegisterEmployee },
+  components: { CenterMenuCompany, RegisterEmployee, CreateDi },
   data: () => ({
     open: false,
+    flag: false,
     form_item: {
       name_item: "dd",
       id_item: 1,
       children_item: [],
     },
-    children: [
-      {
-        id: 1,
-        name: "Sub Group1",
-        children: [
-          {
-            id: 7,
-            name: "Subsub group2",
-            children: [
-              {
-                id: 9,
-                name: "Subsub group2",
-                children: [
-                  { id: 13, name: "Item3", children: [] },
-                  { id: 14, name: "Item4", children: [] },
-                ],
-              },
-              { id: 10, name: "Subsub group4", children: [] },
-            ],
-          },
-          { id: 8, name: "Subsub group5", children: [] },
-        ],
-      },
-      {
-        id: 2,
-        name: "Sub Group2",
-        children: [
-          { id: 11, name: "Item", children: [] },
-          { id: 12, name: "Item", children: [] },
-        ],
-      },
-      {
-        id: 3,
-        name: "Item3",
-        children: [],
-      },
-      {
-        id: 4,
-        name: "Item4",
-        children: [],
-      },
-      {
-        id: 5,
-        name: "Item5",
-        children: [],
-      },
-      {
-        id: 6,
-        name: "Item6",
-        children: [],
-      },
-    ],
+    children: [],
   }),
+
+  beforeCreate: function () {
+    this.$store
+      .dispatch("GetDiportamentTree")
+      .then((resp) => ((this.children = resp.data), console.log(resp)))
+      .catch((err) => console.log(err));
+  },
+
   methods: {
     Onlogin(data) {
       (this.open = !this.open),
@@ -94,6 +61,16 @@ export default {
         (this.form_item.id_item = data.id),
         (this.form_item.children_item = data.children),
         console.log(data);
+    },
+    GetDipor(data) {
+      (this.flag = !this.flag),
+        (this.id_item = data.id),
+        (this.form_item.children_item = data.children),
+        console.log(data);
+    },
+    Cl() {
+      this.flag = true;
+      console.log(this.$store.getters.getToken);
     },
   },
 };

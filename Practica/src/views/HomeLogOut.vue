@@ -1,5 +1,5 @@
 <script setup>
-import Header from "../components/HeaderAuth.vue";
+import Header from "../components/HiderAuth.vue";
 </script>
 
 <template>

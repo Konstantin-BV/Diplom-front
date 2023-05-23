@@ -4,32 +4,14 @@
       <div class="Main_div_con3">
         <div class="Main_div_con2">
           <div style="display: flex; flex-direction: row; align-items: center">
-            <div v-if="Object.keys(children).length != 0">
-              <div v-on:click.prevent="open = !open" class="Button_open">
-                <i class="right" v-bind:class="{ down: open }"></i>
-              </div>
+            <div v-on:click.prevent="open = !open" class="Button_open">
+              <i class="right" v-bind:class="{ down: open }"></i>
             </div>
-            <div style="margin-left: 10px">{{ title }}</div>
-          </div>
-          <div class="button_name">
-            <button
-              v-on:click.prevent="login1"
-              class="btn btn-outline-dark btn-sm"
-            >
-              Подробние
-            </button>
+            <div style="margin-left: 10px">{{ name }}</div>
           </div>
         </div>
         <div v-show="open" class="Main_div_con4" :key="id">
-          <div v-for="(item, id) in children" :key="id">
-            <CenterMenu
-              v-for="(item1, id) in item"
-              v-bind="item1"
-              :key="id"
-              @login="login"
-              @login1="login"
-            />
-          </div>
+          {{ main_text }}
         </div>
       </div>
     </div>
@@ -42,27 +24,17 @@ export default {
   props: {
     // eslint-disable-next-line vue/require-prop-type-constructor
 
-    children: {
-      type: Array,
+    statu: {
+      type: Number,
       default: null,
       required: true,
     },
-    title: {
+    name: {
       type: String,
       default: null,
       required: true,
     },
-    parent_id: {
-      type: Number,
-      default: null,
-      required: true,
-    },
-    company_id: {
-      type: Number,
-      default: null,
-      required: true,
-    },
-    description: {
+    main_text: {
       type: String,
       default: null,
       required: true,
@@ -80,7 +52,7 @@ export default {
     login(data) {
       this.$emit("login", {
         id: data.id,
-        title: data.title,
+        name: data.name,
         children: data.children,
       });
     },
@@ -88,10 +60,10 @@ export default {
     login1() {
       this.$emit("login1", {
         id: this.id,
-        title: this.title,
+        name: this.name,
         children: this.children,
       });
-      console.log(this.title);
+      console.log(this.name);
     },
   },
 };

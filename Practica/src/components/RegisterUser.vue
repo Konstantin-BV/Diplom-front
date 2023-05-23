@@ -87,7 +87,7 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
-        role_id: 2,
+        role_id: 1,
         department_id: this.id_item,
       };
       this.$store

@@ -1,42 +1,8 @@
-<!--<template>
-<div class="main-page">
-    <SubHeader />
-    <RouterView />
-    <Footer />
-</div>
-</template>
 
-<script setup>
-import SubHeader from "../components/SubHeader.vue";
-import Footer from "../components/FooTer.vue";
-</script>
-
-<style scoped>
-.main-page {
-display: flex;
-flex-direction: column;
-}
-</style>
--->
 <script setup>
 import LeftMenu from "../components/LeftMenuAdmin.vue";
 import Header from "../components/HeaderAll.vue";
 </script>
-
-<!--<template>
-  <div class="body_reg">
-    <div class="form_con">
-      <Header class="header_con" />
-      <div class="menu_cont">
-        <LeftMenu class="left_menu" />
-        <div class="content_con">
-          <router-view></router-view>
-        </div>
-      </div>
-      <Footer class="footer_con" />
-    </div>
-  </div>
-</template> -->
 
 <template>
   <div class="contener h-100">

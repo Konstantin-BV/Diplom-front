@@ -149,8 +149,8 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
-        role_id: 1,
-        department_id: this.id_item,
+        role_id: 2,
+        department_id: [1, 2, 6],
       };
       this.$store
         .dispatch("register", data)
