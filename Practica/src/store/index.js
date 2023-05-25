@@ -52,7 +52,10 @@ export const store = createStore({
           .then((resp) => {
             const token = resp.data.token;
             const user = resp.data.user;
+            const company = resp.data.user_object;
+            commit("auth_company", company, user, token);
             console.log(user);
+            console.log(company);
             commit("auth_success", token);
             commit("auth_name", user);
             localStorage.setItem("token", token);
@@ -70,16 +73,48 @@ export const store = createStore({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:8080/api/register",
+          url: "http://localhost:8080/api/registration",
           data: user,
           method: "POST",
+          headers: {
+            Authorization: `Bearer ${store.getters.getToken}`,
+          },
         })
           .then((resp) => {
             const token = resp.data.token;
             const user = resp.data.user;
             localStorage.setItem("token", token);
+            commit("auth_name", user);
             axios.defaults.headers.common["Authorization"] = token;
             commit("auth_success", token, user);
+            resolve(resp);
+          })
+          .catch((err) => {
+            commit("auth_error", err);
+            localStorage.removeItem("token");
+            reject(err);
+          });
+      });
+    },
+    CreateTask({ commit }, user) {
+      return new Promise((resolve, reject) => {
+        axios({
+          url:
+            import.meta.env.VITE_API_URL +
+            "/companies/" +
+            store.getters.getCompanyid +
+            "/tasks",
+          method: "POST",
+          data: user,
+          headers: {
+            Authorization: `Bearer ${store.getters.getToken}`,
+          },
+          params: {
+            id: Number(store.getters.getCompanyid),
+          },
+        })
+          .then((resp) => {
+            console.log(resp);
             resolve(resp);
           })
           .catch((err) => {
@@ -93,7 +128,6 @@ export const store = createStore({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          // url: "http://localhost:8080/api/companies",
           url: import.meta.env.VITE_API_URL + "/registration",
           data: Company,
           method: "POST",
@@ -103,6 +137,7 @@ export const store = createStore({
             const token = resp.data.token;
             const Company = resp.data.user_object;
             const User = resp.data.user;
+            commit("auth_name", User);
             localStorage.setItem("token", token);
             commit("auth_company", Company, User, token);
             resolve(resp);

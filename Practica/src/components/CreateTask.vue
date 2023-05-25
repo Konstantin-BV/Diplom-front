@@ -9,7 +9,7 @@
         class="form-control"
         id="inputEmail4"
         placeholder="Введите название"
-        v-model="form.tiile"
+        v-model="form.title"
       />
     </div>
     <div>
@@ -27,7 +27,7 @@
                 id="inputEmail4"
                 style="width: 130%"
                 placeholder="Введите пароль"
-                v-model="item.tiile"
+                v-model="item.title"
               />
             </div>
           </div>
@@ -77,19 +77,30 @@ export default {
     open: false,
     ask: "",
     count: 0,
-    title: "1qw",
     form: {
       title: "",
+      description: "Можете сделать и зеленый",
+      company_id: 1,
       children: [],
     },
   }),
 
   methods: {
     AddChildren() {
-      this.form.children.push({ id: this.count++ });
+      this.form.children.push({
+        id: this.count++
+      });
     },
     asdzzzz() {
-      console.log(this.form);
+      let data = {
+        title: this.form.title,
+        children: this.form.children,
+        company_id: this.$store.getters.getCompanyid,
+      };
+      this.$store
+        .dispatch("CreateTask", data)
+        .then()
+        .catch((err) => console.log(err));
     },
   },
 };

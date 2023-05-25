@@ -89,10 +89,12 @@ export default {
         password_confirmation: this.password_confirmation,
         role_id: 1,
         department_id: this.id_item,
+        company_id: 3,
       };
+      console.log(data);
       this.$store
         .dispatch("register", data)
-        .then(() => this.$router.push("/"))
+        .then()
         .catch((err) => console.log(err));
     },
   },

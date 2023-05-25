@@ -58,22 +58,22 @@
         <div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
-              <div
-                class="info_chexkbox"
-                v-for="(item, id) in children"
-                v-bind="item"
-                :key="id"
-              >
-                <input
-                  type="checkbox"
-                  id="item.id"
-                  value="item.name"
-                  v-model="item.check"
-                />
-                <label for="item.name"> {{ item.name }} </label>
+              <div v-for="(item1, id) in children" :key="id">
+                <div
+                  class="info_chexkbox"
+                  v-for="(item, id) in item1"
+                  :key="id"
+                >
+                  <input
+                    type="checkbox"
+                    id="item.id"
+                    v-bind:value="item.id"
+                    v-model="department_id"
+                  />
+                  <label for="item.id"> {{ item.title }} </label>
+                </div>
               </div>
             </li>
-            <li><a class="dropdown-item" href="#">Подотдел</a></li>
           </ul>
         </div>
       </div>
@@ -114,33 +114,14 @@ export default {
       id: "",
       role_id: 2,
       department_id: [],
-      children: [
-        {
-          id: 1,
-          name: "Sub Group1",
-        },
-        {
-          id: 2,
-          name: "Sub Group2",
-        },
-        {
-          id: 3,
-          name: "Item3",
-        },
-        {
-          id: 4,
-          name: "Item4",
-        },
-        {
-          id: 5,
-          name: "Item5",
-        },
-        {
-          id: 6,
-          name: "Item6",
-        },
-      ],
+      children: [],
     };
+  },
+  beforeCreate: function () {
+    this.$store
+      .dispatch("GetDiportamentTree")
+      .then((resp) => ((this.children = resp.data), console.log(resp)))
+      .catch((err) => console.log(err));
   },
   methods: {
     register: function () {
@@ -150,8 +131,9 @@ export default {
         password: this.password,
         password_confirmation: this.password_confirmation,
         role_id: 2,
-        department_id: [1, 2, 6],
+        department_id: this.department_id,
       };
+      console.log()
       this.$store
         .dispatch("register", data)
         .then(() => this.$router.push("/"))

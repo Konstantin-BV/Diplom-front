@@ -47,7 +47,7 @@ import OneTask from "../components//one_task.vue";
                       class="nav-link text-white h-100 text-a"
                       @click="OpenAsk(item)"
                     >
-                      {{ item.name }}
+                      {{ item.task_title }}
                     </button>
                   </li>
                 </div>
@@ -102,83 +102,21 @@ export default {
     },
     children: [
       {
-        id: 1,
-        name: "Sub Group1",
-        statu: 1,
+        task_id: 1,
+        task_title: "Sub Group1",
+        status_id: 1,
         children: [
           {
-            id: 1,
-            name: "aaa",
-            main_text:
+            task_id: 1,
+            task_title:
               "aaaaaaaaaaaaaaaassssssssssssssssssssssdddddddddddddddddddwwwwwwwwwwwwwdddddddddfffff",
-            statu: 1,
+            status_id: 0,
           },
           {
-            id: 2,
-            name: "Subsub group5",
-            main_text:
+            task_id: 2,
+            task_title:
               "bbbbbbbbbffffffffffffsssssssqqqqqqq ssssssssssss dddddddddddd wwwwwwwwwwww eeeeeeeee",
-            statu: 1,
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "Sub Group2",
-        children: [
-          {
-            id: 1,
-            name: "aaa",
-            main_text:
-              "cccccccccccccccccccfsssssssss wwwwwwwww qqqqqqqqqq rrrrrrrrrrrr aaaaaaaaaa dddddddddd",
-            statu: 1,
-          },
-          {
-            id: 2,
-            name: "Subsub group5",
-            main_text:
-              "bbbbbbbbbffffffffffffsssssssqqqqqqq ssssssssssss dddddddddddd wwwwwwwwwwww eeeeeeeee",
-            statu: 1,
-          },
-        ],
-      },
-      {
-        id: 3,
-        name: "Sub Group3",
-        children: [
-          {
-            id: 1,
-            name: "aaa",
-            main_text:
-              "cccccccccccccccccccfsssssssss wwwwwwwww qqqqqqqqqq rrrrrrrrrrrr aaaaaaaaaa dddddddddd",
-            statu: 1,
-          },
-          {
-            id: 2,
-            name: "Subsub group5",
-            main_text:
-              "bbbbbbbbbffffffffffffsssssssqqqqqqq ssssssssssss dddddddddddd wwwwwwwwwwww eeeeeeeee",
-            statu: 1,
-          },
-        ],
-      },
-      {
-        id: 4,
-        name: "Sub Group4",
-        children: [
-          {
-            id: 1,
-            name: "aaa",
-            main_text:
-              "cccccccccccccccccccfsssssssss wwwwwwwww qqqqqqqqqq rrrrrrrrrrrr aaaaaaaaaa dddddddddd",
-            statu: 1,
-          },
-          {
-            id: 2,
-            name: "Subsub group5",
-            main_text:
-              "bbbbbbbbbffffffffffffsssssssqqqqqqq ssssssssssss dddddddddddd wwwwwwwwwwww eeeeeeeee",
-            statu: 1,
+            status_id: 0,
           },
         ],
       },

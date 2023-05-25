@@ -41,7 +41,7 @@ export default {
     flag: false,
     form_item: {
       name_item: "dd",
-      id_item: 1,
+      id_item: null,
       children_item: [],
     },
     children: [],

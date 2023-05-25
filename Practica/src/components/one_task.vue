@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="open = !open" class="Text_Name">Шаг №{{ id }}</div>
+    <div @click="open = !open" class="Text_Name">Шаг №{{ task_id }}</div>
     <div>
       <div v-if="open">
         <div class="Condition_Text">
@@ -15,7 +15,7 @@
             <label>Сделано</label>
           </div>
           <div class="Text_Task">
-            {{ main_text }}
+            {{ task_title }}
           </div>
         </div>
         <div v-if="ddd == 1" class="Ask_Button">
@@ -38,17 +38,17 @@ export default {
       default: null,
       required: true,
     },
-    name: {
+    task_title: {
       type: String,
       default: null,
       required: true,
     },
-    id: {
+    task_id: {
       type: Number,
       default: null,
       required: true,
     },
-    statu: {
+    status_id: {
       type: Number,
       default: null,
       required: true,
@@ -59,6 +59,10 @@ export default {
     ddd: 1,
     ask: "",
   }),
+
+  created: function () {
+    this.ddd = this.status_id;
+  },
 };
 </script>
 
