@@ -1,27 +1,67 @@
 <template>
   <div>
-    <div @click="open = !open" class="Text_Name">Шаг №{{ task_id }}</div>
+    <div class="title_task">
+      <div class="Text_Name">
+        <div @click="open = !open" class="Text_Name title_task">
+          Шаг №{{ task_id }}
+          <div v-if="ddd == 2">
+            <img style="height: 30px" src="../assets/check2.svg" />
+          </div>
+          <div v-if="ddd == 1" class="bi bi-question-lg">
+            <img style="height: 30px" src="../assets/question-lg.svg" />
+          </div>
+          <div v-if="ddd == 0" class="bi bi-x-lg">
+            <img style="height: 30px" src="../assets/x-lg.svg" />
+          </div>
+        </div>
+      </div>
+    </div>
     <div>
       <div v-if="open">
-        <div class="Condition_Text">
-          <div class="Radio_Buttons">
-            <input type="radio" value="0" v-model="ddd" />
-            <label>Не сделано</label>
-            <br />
-            <input type="radio" value="1" v-model="ddd" />
-            <label>Вопрос</label>
-            <br />
-            <input type="radio" value="2" v-model="ddd" />
-            <label>Сделано</label>
+        <div class="Text_Task" style="font-size: 21px">
+          {{ task_title }}
+        </div>
+        <div
+          v-for="(item, id) in ask"
+          v-bind="item"
+          :key="id"
+          style="margin: 15px"
+        >
+          <div
+            v-if="item.id_user == 1"
+            class="w-100 content_main h-40"
+            style="text-align: left"
+          >
+            <div class="">
+              <div style>
+                <br />
+                {{ item.name }} {{ item.time }}
+              </div>
+            </div>
+            <div class="left_text" style="font-size: 21px">
+              {{ item.ask }}
+            </div>
           </div>
-          <div class="Text_Task">
-            {{ task_title }}
+          <div
+            v-if="item.id_user != 1"
+            class="w-100 content_main h-40"
+            style="text-align: right"
+          >
+            <div class="">
+              <div style>
+                <br />
+                {{ item.name }} {{ item.time }}
+              </div>
+            </div>
+            <div class="left_text" style="font-size: 21px">
+              {{ item.ask }}
+            </div>
           </div>
         </div>
         <div v-if="ddd == 1" class="Ask_Button">
-          <input v-model="ask" placeholder="Введите вопрос" class="Text_Ask" />
+          <input v-model="ask1" placeholder="Введите вопрос" class="Text_Ask" />
           <button class="Button_Text_Ask btn btn-outline-dark">
-            Отправить вопрос
+            Отправить сообщение
           </button>
         </div>
       </div>
@@ -50,14 +90,19 @@ export default {
     },
     status_id: {
       type: Number,
+      default: 0,
+      required: true,
+    },
+    ask: {
+      type: Array,
       default: null,
       required: true,
     },
   },
   data: () => ({
     open: false,
-    ddd: 1,
-    ask: "",
+    ddd: 0,
+    ask1: "",
   }),
 
   created: function () {
@@ -90,15 +135,24 @@ export default {
   flex: row;
 }
 
+.left_menu {
+  display: flex;
+  width: 120px;
+}
+
 .Text_Task {
   margin-left: 15px;
-  width: 920px;
 }
 
 .Ask_Button {
   min-height: 35;
   margin-left: 15px;
   margin-top: 15px;
+}
+
+.title_task {
+  display: flex;
+  flex: row;
 }
 
 .Text_Ask {

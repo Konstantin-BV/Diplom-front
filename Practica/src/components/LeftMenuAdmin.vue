@@ -26,6 +26,13 @@ import { store } from "../store/index.js";
               >Отправка задач</router-link
             >
           </li>
+          <li class="nav-item hov text-white" style="height: 5%">
+            <router-link
+              :to="'/CreateTasks'"
+              class="nav-link text-white h-100 text-a"
+              >Создание задач</router-link
+            >
+          </li>
           <li class="nav-item mycol hov text-white" style="height: 5%">
             <router-link :to="'/'" class="text-white nav-link text-a"
               >Выданные задачи</router-link

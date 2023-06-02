@@ -64,9 +64,9 @@ export default {
     },
     GetDipor(data) {
       (this.flag = !this.flag),
-        (this.id_item = data.id),
-        (this.form_item.children_item = data.children),
-        console.log(data);
+        (this.form_item.id_item = data.id),
+        (this.form_item.form_item.children_item = data.children),
+        console.log(this.id_item);
     },
     Cl() {
       this.flag = true;

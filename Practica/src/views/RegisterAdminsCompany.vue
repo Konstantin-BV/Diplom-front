@@ -8,8 +8,26 @@
       >
         Добавить администратора
       </button>
-      <div class="Main_div_con1" v-for="(item, id) in children" :key="id">
-        {{ item.name }}
+      <div v-for="(item, id) in children" :key="id" class="Main_div_con1">
+        <div class="Main_div_con">
+          <div class="Main_div_con3">
+            <div class="Main_div_con2">
+              <div
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+                <div style="margin-left: 10px">{{ item.name }}</div>
+              </div>
+              <div class="button_name">
+                <button
+                  v-on:click.prevent="login1"
+                  class="btn btn-outline-dark btn-sm"
+                >
+                  Подробние
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="Main_div_con col mh-70">
@@ -35,27 +53,11 @@ export default {
     children: [
       {
         id: 1,
-        name: "Sub Group1",
+        name: "Валентин Васильевич Романов",
       },
       {
         id: 2,
-        name: "Sub Group2",
-      },
-      {
-        id: 3,
-        name: "Item3",
-      },
-      {
-        id: 4,
-        name: "Item4",
-      },
-      {
-        id: 5,
-        name: "Item5",
-      },
-      {
-        id: 6,
-        name: "Item6",
+        name: "Татьяна Викторовна Ревина",
       },
     ],
   }),
@@ -72,6 +74,61 @@ export default {
 </script>
 
 <style>
+.Main_div_con1 {
+  position: relative;
+  display: flex;
+  justify-self: start;
+  flex-direction: column;
+  margin: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.Main_div_con {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.Main_div_con2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 50px;
+  font-size: 14pt;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.Button_open {
+  font-size: 20pt;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.Main_div_con3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Main_div_con2:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+.button_name {
+  position: absolute;
+  right: 15px;
+}
+
+.Main_div_con4 {
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
 .Main_class {
   display: flex;
   flex-direction: row;

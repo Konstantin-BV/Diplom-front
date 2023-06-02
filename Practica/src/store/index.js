@@ -192,6 +192,7 @@ export const store = createStore({
         })
           .then((resp) => {
             resolve(resp);
+            console.log(resp);
           })
           .catch((err) => {
             commit("auth_error", err);

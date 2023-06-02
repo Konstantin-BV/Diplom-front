@@ -13,30 +13,40 @@
           </div>
           <div class="button_name1">
             <div class="dropdown" style="margin-right: 10px">
-              <button
-                class="btn btn-outline-dark btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Добавить
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" v-on:click.prevent="login1" href="#"
-                    >Сотрудника</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    v-on:click.prevent="GetDipor"
-                    href="#"
-                    >Подотдел</a
-                  >
-                </li>
-              </ul>
+              <div class="bbbb">
+                <button
+                  v-on:click.prevent="login1"
+                  class="btn btn-outline-dark btn-sm"
+                  style="margin-right: 10px"
+                >
+                  Подробние
+                </button>
+
+                <button
+                  class="btn btn-outline-dark btn-sm dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Добавить
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      v-on:click.prevent="login1"
+                      href="#"
+                      >Сотрудника</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" v-on:click="GetDipor" href="#"
+                      >Подотдел</a
+                    >
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -46,8 +56,8 @@
               v-for="(item1, id) in item"
               v-bind="item1"
               :key="id"
-              @login="login"
               @login1="login"
+              @GetDipor="GetDipor1"
             />
           </div>
         </div>
@@ -119,7 +129,15 @@ export default {
         name: this.name,
         children: this.children,
       });
-      console.log(this.name);
+      console.log(this.id);
+    },
+    GetDipor1(data) {
+      this.$emit("GetDipor", {
+        id: data.id,
+        name: data.name,
+        children: data.children,
+      });
+      console.log(this.id);
     },
   },
 };
@@ -131,6 +149,18 @@ export default {
   flex-direction: column;
   overflow: hidden;
 }
+
+.bbbb {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.button_name {
+  position: absolute;
+  right: 15px;
+}
+
 .Main_div_con2 {
   display: flex;
   flex-direction: row;

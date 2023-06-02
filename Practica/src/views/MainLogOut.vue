@@ -66,7 +66,6 @@ import Header from "../components/SubHeader.vue";
   padding: 40px;
   display: flex;
   flex: row;
-  
 }
 
 .left_text {

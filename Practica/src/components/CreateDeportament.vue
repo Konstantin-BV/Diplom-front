@@ -3,12 +3,26 @@
     <div class="d_i_v">
       <img class="header__logo" src="../assets/12.svg" />
       <div>
-        <label for="inputEmail4" class="form-label">{{ id_item }}</label>
+        <label for="inputEmail4" class="form-label"
+          >Введите название отдела</label
+        >
         <input
           type="email"
           class="form-control"
           id="inputEmail4"
-          placeholder="Введите имя"
+          placeholder="Введите название"
+          v-model="name"
+        />
+      </div>
+      <div>
+        <label for="inputEmail4" class="form-label"
+          >Введите дополнительную информацию</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Введите дополнительную информацию"
           v-model="name"
         />
       </div>

@@ -1,4 +1,3 @@
-
 <script setup>
 import LeftMenu from "../components/LeftMenuAdmin.vue";
 import Header from "../components/HeaderAll.vue";
